@@ -1,0 +1,12 @@
+jobs:
+  secure-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Ejecutar Secure Merge Guard
+        uses: ./  # o la ruta al repositorio de la acción
+        with:
+          critical_branches: "main,master,production"
+        env:
+          LATCH_APP_ID: ${{ secrets.LATCH_APP_ID }}
+          LATCH_SECRET: ${{ secrets.LATCH_SECRET }}
